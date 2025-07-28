@@ -1,120 +1,173 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>All Gear by Rashif</title>
   <style>
     body {
+      background-color: #0d0d0d;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0e0e10;
-      color: #fff;
-    }header {
-  background-color: #111;
-  padding: 20px;
-  text-align: center;
-  border-bottom: 2px solid #00e0ff;
-}
+      padding: 0;
+    }
 
-header h1 {
-  color: #00e0ff;
-  text-shadow: 0 0 5px #00e0ff;
-}
+    header {
+      text-align: center;
+      padding: 20px;
+    }
 
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 40px 20px;
-}
+    header h1 {
+      color: #00f0ff;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px #00f0ff;
+    }
 
-.product-card {
-  background-color: #1a1a1d;
-  border: 1px solid #333;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0, 224, 255, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    header input {
+      padding: 10px;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      margin-bottom: 15px;
+      background-color: #1a1a1a;
+      color: white;
+    }
 
-.product-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-}
+    .filters {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
 
-.product-card h3 {
-  color: #00e0ff;
-  margin-top: 15px;
-}
+    .filters button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 20px;
+      background: #222;
+      color: #00f0ff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-.product-card p {
-  color: #ccc;
-  font-size: 0.9rem;
-}
+    .filters button:hover {
+      background: #00f0ff;
+      color: black;
+    }
 
-.price {
-  font-size: 1.1rem;
-  color: #25d366;
-  margin: 10px 0;
-}
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
 
-.whatsapp-btn {
-  background-color: #25d366;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 6px;
-  box-shadow: 0 0 10px #25d366;
-  transition: 0.3s ease;
-}
+    .product-card {
+      background-color: #1a1a1a;
+      border-radius: 15px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,255,255,0.1);
+    }
 
-.whatsapp-btn:hover {
-  background-color: #1da851;
-  box-shadow: 0 0 15px #1da851;
-}
+    .product-card img {
+      max-width: 100%;
+      height: 140px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
 
-footer {
-  background-color: #111;
-  text-align: center;
-  padding: 20px;
-  color: #666;
-}
+    .product-card h3 {
+      color: #00f0ff;
+      margin: 10px 0 5px;
+    }
 
+    .product-card p {
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    .product-card span {
+      display: block;
+      margin: 8px 0;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #00ff88;
+    }
+
+    .product-card a button {
+      padding: 10px 15px;
+      border: none;
+      background: #25D366;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .product-card a button:hover {
+      background: #1ebd5a;
+    }
   </style>
 </head>
 <body>
+
   <header>
     <h1>All Gear by Rashif</h1>
-    <p>Premium Mobile Accessories Store</p>
-  </header>  <section class="product-grid">
-    <div class="product-card">
-      <img src="https://via.placeholder.com/300x200?text=Neckband" alt="Neckband">
+    <input type="text" placeholder="Search accessories..." />
+    <div class="filters">
+      <button onclick="filterProducts('all')">All</button>
+      <button onclick="filterProducts('neckband')">Neckbands</button>
+      <button onclick="filterProducts('earbuds')">Earbuds</button>
+    </div>
+  </header>
+
+  <section class="product-grid" id="productGrid">
+
+    <!-- Product 1 -->
+    <div class="product-card" data-category="neckband">
+      <img src="neckband.jpg" alt="Neckband" />
       <h3>Wireless Neckband</h3>
       <p>24hr battery, deep bass</p>
-      <div class="price">₹999</div>
-      <a class="whatsapp-btn" href="https://wa.me/917208357397?text=I'm%20interested%20in%20Wireless%20Neckband%20for%20₹999" target="_blank">Buy on WhatsApp</a>
-    </div><div class="product-card">
-  <img src="https://via.placeholder.com/300x200?text=Earbuds" alt="Earbuds">
-  <h3>True Wireless Earbuds</h3>
-  <p>Touch control, noise cancel</p>
-  <div class="price">₹1249</div>
-  <a class="whatsapp-btn" href="https://wa.me/917208357397?text=I'm%20interested%20in%20True%20Wireless%20Earbuds%20for%20₹1249" target="_blank">Buy on WhatsApp</a>
-</div>
+      <span>₹999</span>
+      <a href="https://wa.me/917208357397?text=Hi%20I%20want%20to%20buy%20Wireless%20Neckband">
+        <button>Buy on WhatsApp</button>
+      </a>
+    </div>
 
-<div class="product-card">
-  <img src="https://via.placeholder.com/300x200?text=Charger" alt="Charger">
-  <h3>Fast Charger</h3>
-  <p>30W quick charge, dual USB</p>
-  <div class="price">₸499</div>
-  <a class="whatsapp-btn" href="https://wa.me/917208357397?text=I'm%20interested%20in%20Fast%20Charger%20for%20₸499" target="_blank">Buy on WhatsApp</a>
-</div>
+    <!-- Product 2 -->
+    <div class="product-card" data-category="earbuds">
+      <img src="earbuds.jpg" alt="Earbuds" />
+      <h3>Premium Earbuds</h3>
+      <p>Noise cancellation, 30hr battery</p>
+      <span>₹1499</span>
+      <a href="https://wa.me/917208357397?text=Hi%20I%20want%20to%20buy%20Premium%20Earbuds">
+        <button>Buy on WhatsApp</button>
+      </a>
+    </div>
 
-  </section>  <footer>
-    &copy; 2025 All Gear by Rashif. Designed for tech lovers.
-  </footer>
+    <!-- Add more products here -->
+
+  </section>
+
+  <script>
+    function filterProducts(category) {
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
 </body>
 </html>
